@@ -22,7 +22,7 @@ namespace TestNinja.UnitTests
         }
 
         [Test]
-        [Ignore("Becuse I Want To Test Ignore Atrr :) ")]
+        [Ignore("Becuse I Want To Test Ignore Atrr :) ")] // Ignore Test With A Message
         public void Add_WhenCalled_ReturnSumOfArgumants()
         {
             var result = _math.Add(1, 2);
