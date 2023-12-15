@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using TestNinja.Fundamentals;
@@ -37,6 +38,30 @@ namespace TestNinja.UnitTests
         {
             var result = _math.Max(a, b);
             Assert.That(result, Is.EqualTo(expectedResult));
+        }
+
+        [Test]
+        public void GetOddNumber_LimitIsGraderThanZero_ReturnOddNumberUptoLimit()
+        {
+            var result = _math.GetOddNumbers(5);
+
+            Assert.That(result, Is.Not.Empty);
+
+            // Not Good Idea
+            //Assert.That(result, Does.Contain(1));
+            //Assert.That(result, Does.Contain(3));
+            //Assert.That(result, Does.Contain(5));
+
+            // makes Sure that array is exactly like {1,3,5},
+            //Assert.That(result, Is.EquivalentTo(new[] { 1, 3, 5 }));
+
+            //Useful
+            Assert.That(result, Is.Ordered);
+            Assert.That(result, Is.Unique);
+
+            //Better than befor
+            Assert.That(result.Any(x => x % 2 == 1), Is.True);
+
         }
     }
 }
